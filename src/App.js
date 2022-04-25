@@ -2,6 +2,7 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
+import OptimizeTest from "./OptimizeTest";
 
 // https://jsonplaceholder.typicode.com/comments
 
@@ -27,7 +28,7 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("mounT!");
+    // console.log("mounT!");
     getData();
   }, []);
 
@@ -45,7 +46,7 @@ function App() {
   };
 
   const onRemove = (targetId) => {
-    console.log(targetId);
+    // console.log(targetId);
     const newDiaryList = data.filter((it) => it.id !== targetId);
     setData(newDiaryList);
   };
@@ -59,7 +60,7 @@ function App() {
   };
 
   const getDiaryAnalysis = useMemo(() => {
-    console.log("일기 분석 시작");
+    // console.log("일기 분석 시작");
     const goodCount = data.filter((it) => it.emotion >= 3).length;
     const badCount = data.length - goodCount;
     const goodRatio = (goodCount / data.length) * 100;
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <div className="App">
+      <OptimizeTest />
       <DiaryEditor onCreate={onCreate} />
       <div>전체 일기 : {data.length}개</div>
       <div>기분 좋은 일기 : {goodCount}개</div>
